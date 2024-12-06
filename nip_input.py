@@ -10,7 +10,18 @@ for example in data:
     # if not example["informal_proof"]:
     #     continue
     # f.write(f"{example["answer_id"]}\n## Input:\n\n**Informal theorem:**\n{example['informal_statement']}\n**Formal theorem:**\n{example['formal_statement']}\n**Informal proof:**\n{example['informal_proof']}\n\n## Output:\n\n**Formal proof:**\n{example['formal_proof']}\n\n--------------\n\n")
-    formal_statement = example["formalProof"][:example["formalProof"].find(":= by")+len(":= by")].strip()
+    if example["formalProof"].find(":=by")!=-1:
+        # formal_statement = example["formalProof"][:example["formalProof"].find(":= by")+len(":= by")].strip()
+        if example["formalProof"].find(":= by")!=-1:
+            if example["formalProof"].find(":= by")<example["formalProof"].find(":=by"):
+                start=example["formalProof"].find(":= by")+len(":= by")
+            else:
+                start=example["formalProof"].find(":=by")+len(":=by")
+        else:
+            start=example["formalProof"].find(":=by")+len(":=by")
+    else:
+        start=example["formalProof"].find(":= by")+len(":= by")
+    formal_statement = example["formalProof"][:start].strip()
     output[example["id"]]=f"## Input:\n\n**Informal theorem:**\n{example['md']}\n**Formal theorem:**\n```lean\n{formal_statement}\n```\n"
         # output.append(f"## Input:\n\n**Informal theorem:**\n{example['informal_statement']}\n**Formal theorem:**\n{example['formal_statement']}\n**Informal proof:**\n{example['informal_proof']}")
 with open("/ai4math/users/qig/fproof/algebra_exercises_v4_11_0_cleaner_200inputnip.json", "w") as f:
