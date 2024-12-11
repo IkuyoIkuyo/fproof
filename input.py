@@ -2,10 +2,10 @@
 import json
 # dataset = load_dataset("pkuAI4M/algebra_exercises_v4_11_0_cleaner", split='train')
 # /ai4math/users/qig/fproof/starred-data-2.json
-data=json.load(open("/ai4math/users/qig/fproof/starred-data-2.json"))
+data=json.load(open("/ai4math/users/qig/fproof/starred-data-3.json"))
 output = dict()
 # with open("data.txt", "w") as f:
-for example in data:
+for k, example in data:
     # 打印每一行的内容
     # if not example["informal_proof"]:
     #     continue

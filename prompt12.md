@@ -1,5 +1,3 @@
-# Prompt for algebra translator
-
 Suppose you are an expert mathematician and an expert in Lean4 and Mathlib.
 
 Your task is to generate a formal proof in Lean4 according to the corresponding informal proof in natural language provided below. The formal proof must express the precise logic of the informal proof and you must use Lean4. You will be provided with auxiliary information to improve the translation.
